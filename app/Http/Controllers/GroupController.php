@@ -32,9 +32,7 @@ class GroupController extends Controller
 
         auth()->user()->groups()->attach($group);
 
-        return response([
-            'message' => 'success',
-        ], 201);
+        return response($group, 201);
     }
 
     public function show(Group $group, ShowGroupRequest $request): Response
