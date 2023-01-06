@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'invitation_link',
+        'roles',
     ];
 
     /**
@@ -41,7 +42,12 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'roles' => 'array'
     ];
+
+//    protected $attributes = [
+//        'roles' => ['user']
+//    ];
 
     public function adminGroups()
     {
@@ -51,5 +57,10 @@ class User extends Authenticatable
     public function groups()
     {
         return $this->belongsToMany(Group::class, 'user_groups');
+    }
+
+    public function isAdmin(): bool
+    {
+        return in_array('admin', $this->roles);
     }
 }

@@ -37,8 +37,6 @@ class NoteController extends Controller
             'group_id' => $group->id,
         ]);
 
-//        $group->notes()->attach($note);
-
         return $this->returnDefaultSingleDataResponse($note, 201);
     }
 

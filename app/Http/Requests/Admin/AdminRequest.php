@@ -1,22 +1,19 @@
 <?php
 
-namespace App\Http\Requests\GroupRequest;
+namespace App\Http\Requests\Admin;
 
+use App\Rules\PasswordType;
 use Illuminate\Foundation\Http\FormRequest;
 
-class DeleteGroupRequest extends FormRequest
+class AdminRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
      * @return bool
      */
     public function authorize()
     {
-        if (auth()->user()->getAuthIdentifier() != $this->group->administrator_id) {
-            return false;
-        }
-        return true;
+        return auth()->user()->isAdmin();
     }
 
     /**

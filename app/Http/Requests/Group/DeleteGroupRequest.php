@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\GroupRequest;
+namespace App\Http\Requests\Group;
 
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
 
-class LeaveGroupRequest extends FormRequest
+class DeleteGroupRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,15 +13,10 @@ class LeaveGroupRequest extends FormRequest
      */
     public function authorize()
     {
-        if (auth()->user()->getAuthIdentifier() == $this->group->administrator_id) {
+        if (auth()->user()->getAuthIdentifier() != $this->group->administrator_id) {
             return false;
         }
         return true;
-    }
-
-    protected function failedAuthorization()
-    {
-        throw new \Exception("Administrator cannot leave group");
     }
 
     /**
@@ -32,8 +26,6 @@ class LeaveGroupRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            ''
-        ];
+        return [];
     }
 }

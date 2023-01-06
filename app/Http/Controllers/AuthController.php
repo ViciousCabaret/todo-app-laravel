@@ -20,6 +20,7 @@ class AuthController extends Controller
             'email' => $request->get('email'),
             'password' => bcrypt($request->get('password')),
             'invitation_link' => RandomStringGenerator::generate(20),
+            'roles' => ['user'],
         ]);
 
         $token = $user->createToken('appToken')->plainTextToken;

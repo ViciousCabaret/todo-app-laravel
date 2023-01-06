@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\GroupRequest;
+namespace App\Http\Requests\Group;
 
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;

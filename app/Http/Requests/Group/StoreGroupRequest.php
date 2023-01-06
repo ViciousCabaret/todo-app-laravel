@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\GroupRequest;
+namespace App\Http\Requests\Group;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateGroupRequest extends FormRequest
+class StoreGroupRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,9 +13,6 @@ class UpdateGroupRequest extends FormRequest
      */
     public function authorize()
     {
-        if (auth()->user()->getAuthIdentifier() != $this->group->administrator_id) {
-            return false;
-        }
         return true;
     }
 
@@ -27,7 +24,7 @@ class UpdateGroupRequest extends FormRequest
     public function rules()
     {
         return [
-            ''
+            'name' => 'string|required'
         ];
     }
 }

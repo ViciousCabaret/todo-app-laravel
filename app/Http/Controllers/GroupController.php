@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\GroupRequest\DeleteGroupRequest;
-use App\Http\Requests\GroupRequest\KickUserRequest;
-use App\Http\Requests\GroupRequest\LeaveGroupRequest;
-use App\Http\Requests\GroupRequest\ShowGroupRequest;
-use App\Http\Requests\GroupRequest\StoreGroupRequest;
-use App\Http\Requests\GroupRequest\UpdateGroupRequest;
+use App\Http\Requests\Group\DeleteGroupRequest;
+use App\Http\Requests\Group\KickUserRequest;
+use App\Http\Requests\Group\LeaveGroupRequest;
+use App\Http\Requests\Group\ShowGroupRequest;
+use App\Http\Requests\Group\StoreGroupRequest;
+use App\Http\Requests\Group\UpdateGroupRequest;
 use App\Models\Group;
 use App\Models\User;
 use Illuminate\Http\Response;
