@@ -14,9 +14,9 @@ class UserAdminController extends Controller
 
     public function index(AdminRequest $request)
     {
-        return $this->returnDefaultSingleDataResponse([
+        return $this->returnDefaultSingleDataResponse(
             User::all()
-        ]);
+        );
     }
 
     public function store(CreateUserRequest $request)
