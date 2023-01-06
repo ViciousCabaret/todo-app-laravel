@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Invitation;
 
+use App\Models\Group;
 use Illuminate\Foundation\Http\FormRequest;
 
 class InvitationRequest extends FormRequest
@@ -13,7 +14,9 @@ class InvitationRequest extends FormRequest
      */
     public function authorize()
     {
-        if (auth()->user()->getAuthIdentifier() != $this->group->administrator_id) {
+        $group = Group::findOrFail($this->groupId);
+        $group = clone $group;
+        if (auth()->user()->getAuthIdentifier() != $group->administrator_id) {
             return false;
         }
         return true;
@@ -28,7 +31,7 @@ class InvitationRequest extends FormRequest
     {
         return [
             'invitationLink' => 'string|required',
-            'group' => 'string|required',
+            'groupId' => 'integer|required',
         ];
     }
 }

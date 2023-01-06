@@ -23,4 +23,9 @@ class Controller extends BaseController
     {
         return response($data, $code);
     }
+
+    public function returnDefaultSingleDataResponse($data = null, $code = 200): Response
+    {
+        return response($data, $code);
+    }
 }

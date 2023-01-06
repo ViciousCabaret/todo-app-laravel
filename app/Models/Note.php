@@ -9,6 +9,13 @@ class Note extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'description',
+        'priority',
+        'group_id',
+    ];
+
     public function group()
     {
         return $this->belongsTo(Group::class);

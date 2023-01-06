@@ -19,7 +19,7 @@ class UpdateNoteRequest extends FormRequest
         if (!$group->users->contains(auth()->user()->getAuthIdentifier())) {
             return false;
         }
-        return false;
+        return true;
     }
 
     /**
@@ -33,7 +33,7 @@ class UpdateNoteRequest extends FormRequest
             'name' => 'string|required',
             'description' => 'string',
             'priority' => 'integer|required',
-            'groupId' => 'integer|required'
+//            'group_id' => 'integer|required'
         ];
     }
 }

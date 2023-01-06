@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,4 +37,5 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::post('/invitation', [InvitationController::class, 'index']);
 
     Route::resource('note', NoteController::class);
+    Route::put('/profile', [ProfileController::class, 'update']);
 });

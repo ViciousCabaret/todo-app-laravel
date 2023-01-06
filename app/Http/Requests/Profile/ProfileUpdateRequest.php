@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Note;
+namespace App\Http\Requests\Profile;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateNoteRequest extends FormRequest
+class ProfileUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,9 @@ class CreateNoteRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string|required',
-            'description' => 'string',
-//            'priority' => 'integer|required',
-            'group_id' => 'integer|required'
+            'name' => 'required|string',
+            'email' => 'required|string|email',
+            'password' => 'required|string|confirmed'
         ];
     }
 }
