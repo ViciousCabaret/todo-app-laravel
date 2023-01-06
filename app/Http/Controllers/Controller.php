@@ -21,8 +21,6 @@ class Controller extends BaseController
 
     public function returnDefaultDataResponse($data = [], $code = 200): Response
     {
-        return response([
-            'data' => $data,
-        ], $code);
+        return response($data, $code);
     }
 }

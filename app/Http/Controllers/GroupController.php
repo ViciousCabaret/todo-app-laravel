@@ -18,9 +18,7 @@ class GroupController extends Controller
     {
         $groups = auth()->user()->groups()->get();
 
-        return response([
-            'data' => $groups
-        ], 200);
+        return response($groups, 200);
     }
 
     public function store(StoreGroupRequest $request): Response
@@ -32,16 +30,12 @@ class GroupController extends Controller
 
         auth()->user()->groups()->attach($group);
 
-        return response([
-            'message' => 'success',
-        ], 201);
+        return response($group, 201);
     }
 
     public function show(Group $group, ShowGroupRequest $request): Response
     {
-        return response([
-            'data' => $group
-        ], 200);
+        return response($group, 200);
     }
 
     public function update(UpdateGroupRequest $request, Group $group)
@@ -91,8 +85,6 @@ class GroupController extends Controller
 
     public function users(Group $group)
     {
-        return response([
-            'data' => $group->users
-        ], 200);
+        return response($group->users, 200);
     }
 }
