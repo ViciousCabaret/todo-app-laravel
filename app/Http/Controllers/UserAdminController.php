@@ -39,10 +39,14 @@ class UserAdminController extends Controller
 
     public function update(UpdateUserRequest $request, User $user)
     {
+        $roles = $request->get('roles');
+        if ($user->isAdmin()) {
+            $roles[] = ['admin'];
+        }
         $user->update([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'roles' => $request->get('roles'),
+            'roles' => array_unique($roles),
         ]);
 
         return $this->returnDefaultSingleDataResponse($user, 201);
