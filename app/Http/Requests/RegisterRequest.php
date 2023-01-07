@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\PasswordType;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest
@@ -26,7 +27,7 @@ class RegisterRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required|string|unique:users|email',
-            'password' => 'required|string|confirmed'
+            'password' => ['required', 'string', 'confirmed', new PasswordType],
         ];
     }
 }

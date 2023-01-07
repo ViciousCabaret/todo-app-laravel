@@ -41,7 +41,7 @@ class UserAdminController extends Controller
     {
         $roles = $request->get('roles');
         if ($user->isAdmin()) {
-            $roles[] = ['admin'];
+            $roles[] = 'admin';
         }
         $user->update([
             'name' => $request->get('name'),
