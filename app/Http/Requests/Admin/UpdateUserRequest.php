@@ -16,7 +16,7 @@ class UpdateUserRequest extends AdminRequest
     {
         return [
             'name' => 'required|string',
-            'email' => 'required|string|unique:users|email',
+            'email' => 'required|string|email',
             'password' => 'required|string|confirmed',
             'roles' => 'required|array',
             'invitation_link' => 'string'
