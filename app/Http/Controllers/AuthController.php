@@ -15,11 +15,21 @@ class AuthController extends Controller
 {
     public function register(RegisterRequest $request): Response
     {
+        $invitationLink = RandomStringGenerator::generate(30);
+
+        do {
+            $user = User::where('invitation_link', $invitationLink);
+            if (!$user instanceof User) {
+                break;
+            }
+            $invitationLink = RandomStringGenerator::generate(30);
+        } while (true);
+
         $user = User::create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'password' => bcrypt($request->get('password')),
-            'invitation_link' => RandomStringGenerator::generate(20),
+            'invitation_link' => $invitationLink,
             'roles' => ['user'],
         ]);
 
