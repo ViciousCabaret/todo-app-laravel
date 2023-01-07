@@ -19,6 +19,11 @@ class UserAdminController extends Controller
         );
     }
 
+    public function show(AdminRequest $request, User $user)
+    {
+        return $this->returnDefaultDataResponse($user);
+    }
+
     public function store(CreateUserRequest $request)
     {
         $user = User::create([
