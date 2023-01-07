@@ -42,8 +42,6 @@ class UserAdminController extends Controller
         $user->update([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'password' => bcrypt($request->get('password')),
-            'invitation_link' => $request->get('invitation_link') ?? RandomStringGenerator::generate(20),
             'roles' => $request->get('roles'),
         ]);
 

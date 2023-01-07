@@ -25,8 +25,7 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => 'required|string|email',
-            'password' => 'required|string|confirmed'
+            'email' => 'required|string|email'
         ];
     }
 }
